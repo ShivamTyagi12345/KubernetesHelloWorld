@@ -12,7 +12,7 @@ const HOST = '0.0.0.0';
 
 // App
 const app = express();
-app.get('/dukaan', (req, res) => {
+app.get('/', (req, res) => {
   res.send('Dukaan is Open for Business 🍕');
 });
 

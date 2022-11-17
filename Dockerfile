@@ -16,5 +16,8 @@ COPY . .
 #This is provided from the Node16 itself to remove 'root' user permissions
 USER node
 
+#will be essential 
+EXPOSE 8080
+
 #run the application 
 CMD [ "node", "app.js" ]
