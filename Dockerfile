@@ -13,7 +13,7 @@ RUN npm ci --only=production
 #copy everything from 'app' folder inside the DOcker image. Other term for it is bundling the app
 COPY . .
 
-
+#This is provided from the Node16 itself to remove 'root' user permissions
 USER node
 
 #run the application 
