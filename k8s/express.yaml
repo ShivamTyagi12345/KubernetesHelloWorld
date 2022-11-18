@@ -1,0 +1,50 @@
+---
+# v1 version was the first stable version release of the Kubernetes API
+apiVersion: v1
+
+kind: Namespace
+metadata:
+  name: staging
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: express
+  namespace: staging
+  labels:
+    app: express
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: express
+  template:
+    metadata:
+      labels:
+        app: express
+    spec:
+      containers:
+      - name: express
+        image: twaves2611/ye-dukaan-app-h:tagname
+        ports:
+        - name: http
+          containerPort: 8080
+        resources:
+          requests:
+            memory: 64Mi
+            cpu: 100m
+          limits:
+            memory: 128Mi
+            cpu: 300m
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: express
+  namespace: staging
+spec:
+  selector:
+    app: express
+  ports:
+  - protocol: TCP
+    port: 8080
