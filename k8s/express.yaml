@@ -38,7 +38,7 @@ spec:
             cpu: 300m
 ---
 apiVersion: v1
-kind: Service
+kind: Service #Internal Mechanism to manage traffic between the pods . creating Ingress
 metadata:
   name: express
   namespace: staging
